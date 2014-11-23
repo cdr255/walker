@@ -1,6 +1,9 @@
+#include <iostream>
 #include <SFML/Graphics.hpp>
 
 const int TILESIZE=32;
+bool focused=true;
+
 
 class Character {
   // Things that walk on the map.
@@ -37,14 +40,29 @@ int main()
       sf::Event event;
       while(AppWindow.pollEvent(event))
 	{
-	  if(event.type == sf::Event::Closed)
+	  switch (event.type)
 	    {
-	      // Close
+	      // Pause When Unfocused
+	    case sf::Event::LostFocus:
+	      focused = false;
+	      break;
+	     
+	    case sf::Event::GainedFocus:
+	      focused = true;
+	      break;
+
+	      //Close Window
+	    case sf::Event::Closed:
 	      AppWindow.close();
+	      break;
+	      
+	    default:
+	      break;
 	    }
 	}
       
       //Update Window
+      std::cout << focused << "\n";
       AppWindow.clear(sf::Color::Black);
       AppWindow.draw(player.hit_box);
       AppWindow.display();
