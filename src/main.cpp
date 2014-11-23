@@ -3,8 +3,8 @@
 const int TILESIZE=32;
 
 class Character {
+  // Things that walk on the map.
 public:
-  //sf::RectangleShape sprite;
   int x, y, size;
   sf::RectangleShape hit_box;
   Character(int, int);
@@ -24,10 +24,12 @@ Character::Character(int a, int b) {
 
 int main()
 {
-  sf::RenderWindow AppWindow(sf::VideoMode(800, 600), "My Window");
-  // sf::RectangleShape player(sf::Vector2f(120,50));
+  sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
   Character player(10, 10);
-  
+  sf::View screen(sf::FloatRect(100, 100, 100, 100));
+  screen.setViewport(sf::FloatRect(0.25f, 0.25f, 0.50f, 0.50f));
+  AppWindow.setView(screen);
+
   // Main Loop
   while(AppWindow.isOpen())
     {
