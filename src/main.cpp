@@ -60,8 +60,19 @@ int main()
 	      break;
 	    }
 	}
-      if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	player.y++;
+
+      if(focused == true)
+	{
+	  
+	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	    player.y++;
+	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
+	    player.x++;
+	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
+	    player.x--;
+	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
+	    player.y--;
+	}
       
       //Update Window
       std::cout << player.y << "\n";
