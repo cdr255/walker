@@ -12,49 +12,22 @@ int main()
   // Main Loop
   while(system.AppWindow.isOpen())
     {
-      sf::Time delta_time = system.clock.restart();
-
-      std::cout << "Time Elapsed: " << delta_time.asSeconds() << ".\n";
-      // Event Handling
-      sf::Event event;
-      while(system.AppWindow.pollEvent(event))
-	{
-	  switch (event.type)
-	    {
-	      // Pause When Unfocused
-	    case sf::Event::LostFocus:
-	      system.focused = false;
-	      break;
-	     
-	    case sf::Event::GainedFocus:
-	      system.focused = true;
-	      break;
-
-	      //Close Window
-	    case sf::Event::Closed:
-	      system.AppWindow.close();
-	      break;
-	      
-	    default:
-	      break;
-	    }
-	}
-
+      float delta = system.Events();
       if(system.focused == true)
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	    if(player.y < 228)
-	      player.move(0, SPEED * delta_time.asSeconds());
+	      player.move(0, SPEED * delta);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	    if(player.x < 228)
-	      player.move(SPEED * delta_time.asSeconds(), 0);
+	      player.move(SPEED * delta, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	    if(player.x > 100)
-	      player.move(SPEED * delta_time.asSeconds() * -1, 0);
+	      player.move(SPEED * delta * -1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	    if(player.y > 100)
-	      player.move(0, SPEED * delta_time.asSeconds() * -1);
+	      player.move(0, SPEED * delta * -1);
 	  
 	  if(player.hit_box.intersects(destiny.hit_box))
 	    player.score(1);

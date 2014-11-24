@@ -10,6 +10,39 @@ AppWindow.setView(screen);
 }
 
 
-void Gui::Events()
-{
+float Gui::Events()
+
+{      
+  sf::Time delta_time = clock.restart();
+  
+  // Event Handling
+  sf::Event event;
+  while(AppWindow.pollEvent(event))
+    {
+      switch (event.type)
+	{
+	  // Pause When Unfocused
+	case sf::Event::LostFocus:
+	  focused = false;
+	  break;
+	  
+	case sf::Event::GainedFocus:
+	  focused = true;
+	  break;
+	  
+	  //Close Window
+	case sf::Event::Closed:
+	  AppWindow.close();
+	  break;
+	  
+	case sf::Event::KeyPressed:
+	  if(event.key.code == sf::Keyboard::Escape)
+	    AppWindow.close();
+	  break;
+
+	default:
+	  break;
+	}
+    }
+  return delta_time.asSeconds();
 }

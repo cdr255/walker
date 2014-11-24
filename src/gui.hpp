@@ -10,7 +10,7 @@ sf::RenderWindow AppWindow;
 sf::View screen;
 sf::Clock clock;
   Gui(int, int, const char*, int, int, int, int);
-void Events();
+float Events();
 
 };
 
