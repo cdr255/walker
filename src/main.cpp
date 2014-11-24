@@ -1,6 +1,6 @@
 #include "walker.hpp"
 #include "character.hpp"
-
+#include "gui.hpp"
 
 int main()
 {

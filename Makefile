@@ -65,7 +65,8 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_walker_OBJECTS = walker-main.$(OBJEXT) walker-character.$(OBJEXT)
+am_walker_OBJECTS = walker-main.$(OBJEXT) walker-character.$(OBJEXT) \
+	walker-gui.$(OBJEXT)
 walker_OBJECTS = $(am_walker_OBJECTS)
 walker_LDADD = $(LDADD)
 walker_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(walker_LDFLAGS) \
@@ -202,7 +203,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-walker_SOURCES = src/main.cpp src/walker.hpp src/character.cpp src/character.hpp
+walker_SOURCES = src/main.cpp src/walker.hpp src/character.cpp src/character.hpp src/gui.hpp src/gui.cpp
 walker_CPPFLAGS = $(SFML_CFLAGS)
 walker_LDFLAGS = $(SFML_LIBS)
 all: all-am
@@ -294,6 +295,7 @@ distclean-compile:
 	-rm -f *.tab.c
 
 include ./$(DEPDIR)/walker-character.Po
+include ./$(DEPDIR)/walker-gui.Po
 include ./$(DEPDIR)/walker-main.Po
 
 .cpp.o:
@@ -337,6 +339,20 @@ walker-character.obj: src/character.cpp
 #	source='src/character.cpp' object='walker-character.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-character.obj `if test -f 'src/character.cpp'; then $(CYGPATH_W) 'src/character.cpp'; else $(CYGPATH_W) '$(srcdir)/src/character.cpp'; fi`
+
+walker-gui.o: src/gui.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-gui.o -MD -MP -MF $(DEPDIR)/walker-gui.Tpo -c -o walker-gui.o `test -f 'src/gui.cpp' || echo '$(srcdir)/'`src/gui.cpp
+	$(am__mv) $(DEPDIR)/walker-gui.Tpo $(DEPDIR)/walker-gui.Po
+#	source='src/gui.cpp' object='walker-gui.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-gui.o `test -f 'src/gui.cpp' || echo '$(srcdir)/'`src/gui.cpp
+
+walker-gui.obj: src/gui.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-gui.obj -MD -MP -MF $(DEPDIR)/walker-gui.Tpo -c -o walker-gui.obj `if test -f 'src/gui.cpp'; then $(CYGPATH_W) 'src/gui.cpp'; else $(CYGPATH_W) '$(srcdir)/src/gui.cpp'; fi`
+	$(am__mv) $(DEPDIR)/walker-gui.Tpo $(DEPDIR)/walker-gui.Po
+#	source='src/gui.cpp' object='walker-gui.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-gui.obj `if test -f 'src/gui.cpp'; then $(CYGPATH_W) 'src/gui.cpp'; else $(CYGPATH_W) '$(srcdir)/src/gui.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

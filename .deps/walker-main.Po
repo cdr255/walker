@@ -148,7 +148,7 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h src/walker.hpp \
  /usr/include/SFML/Graphics/Sprite.hpp \
  /usr/include/SFML/Graphics/Text.hpp /usr/include/c++/4.8.2/iostream \
  /usr/include/c++/4.8.2/istream /usr/include/c++/4.8.2/bits/istream.tcc \
- src/character.hpp
+ src/character.hpp src/gui.hpp
 
 /usr/include/stdc-predef.h:
 
@@ -541,3 +541,5 @@ src/walker.hpp:
 /usr/include/c++/4.8.2/bits/istream.tcc:
 
 src/character.hpp:
+
+src/gui.hpp:
