@@ -5,8 +5,8 @@ int main()
 {
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
   Character player(10, 10, TILESIZE);
-  sf::View screen(sf::FloatRect(100, 100, 100, 100));
-  screen.setViewport(sf::FloatRect(0.25f, 0.25f, 0.50f, 0.50f));
+  sf::View screen(sf::FloatRect(100, 100, 132, 132));
+  screen.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
   AppWindow.setView(screen);
 
   // Main Loop
@@ -41,13 +41,17 @@ int main()
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	    player.move(0, 1);
+	    if(player.y < 200)
+	      player.move(0, 1);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	    player.move(1, 0);
+	    if(player.x < 200)
+	      player.move(1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	    player.move(-1, 0);
+	    if(player.x > 100)
+	      player.move(-1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	    player.move(0, -1);
+	    if(player.y > 100)
+	      player.move(0, -1);
 	}
       //Update Entities
       player.hit_box.setPosition(player.x, player.y);
