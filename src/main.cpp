@@ -60,9 +60,11 @@ int main()
 	      break;
 	    }
 	}
+      if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
+	player.y++;
       
       //Update Window
-      std::cout << focused << "\n";
+      std::cout << player.y << "\n";
       AppWindow.clear(sf::Color::Black);
       AppWindow.draw(player.hit_box);
       AppWindow.display();
