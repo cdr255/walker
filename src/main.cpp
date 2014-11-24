@@ -5,7 +5,7 @@ int main()
 {
   sf::Clock clock;
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
-  Character player(10, 10, TILESIZE);
+  Character player(100, 100, TILESIZE);
   sf::View screen(sf::FloatRect(100, 100, 132, 132));
   screen.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
   AppWindow.setView(screen);
@@ -47,16 +47,16 @@ int main()
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
 	    if(player.y < 200)
-	      player.move(0, 1);
+	      player.move(0, SPEED * delta_time.asSeconds());
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
 	    if(player.x < 200)
-	      player.move(1, 0);
+	      player.move(SPEED * delta_time.asSeconds(), 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	    if(player.x > 100)
-	      player.move(-1, 0);
+	      player.move(SPEED * delta_time.asSeconds() * -1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	    if(player.y > 100)
-	      player.move(0, -1);
+	      player.move(0, SPEED * delta_time.asSeconds() * -1);
 	}
       //Update Entities
       player.hit_box.setPosition(player.x, player.y);
