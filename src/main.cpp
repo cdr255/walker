@@ -3,15 +3,20 @@
 
 int main()
 {
+  sf::Clock clock;
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
   Character player(10, 10, TILESIZE);
   sf::View screen(sf::FloatRect(100, 100, 132, 132));
   screen.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
   AppWindow.setView(screen);
-
+  
+  
   // Main Loop
   while(AppWindow.isOpen())
     {
+      sf::Time delta_time = clock.restart();
+
+      std::cout << "Time Elapsed: " << delta_time.asSeconds() << ".\n";
       // Event Handling
       sf::Event event;
       while(AppWindow.pollEvent(event))
