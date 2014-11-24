@@ -4,7 +4,7 @@
 
 int main()
 {
-  Gui system;
+  Gui system(300, 300, "Walker", 100, 100, 160, 160);
   sf::Clock clock;
   Character player(100, 100, TILESIZE);
   Character destiny(164, 164, TILESIZE);
