@@ -4,9 +4,8 @@
 
 int main()
 {
-  int score = 0;
   sf::Clock clock;
-  sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
+  sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "Walker v0.1");
   Character player(100, 100, TILESIZE);
   Character destiny(164, 164, TILESIZE);
   sf::View screen(sf::FloatRect(100, 100, 160, 160));
@@ -62,11 +61,11 @@ int main()
 	      player.move(0, SPEED * delta_time.asSeconds() * -1);
 	  
 	  if(player.hit_box.intersects(destiny.hit_box))
-	    score++;
+	    player.score(1);
 
 	}
       //Update Window
-      std::cout << score << "\n";
+      std::cout << player.points << "\n";
       AppWindow.clear(sf::Color::Black);
       AppWindow.draw(player.sprite);
       AppWindow.draw(destiny.sprite);

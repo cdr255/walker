@@ -7,6 +7,7 @@ Character::Character(float a, float b, float tilesize) {
   sprite.setSize(sf::Vector2f(size, size));
   sprite.setPosition(x, y);
   hit_box = sprite.getGlobalBounds();
+  points = 0;
 }
 
 void Character::move(float a, float b)
@@ -24,4 +25,9 @@ void Character::move(float a, float b)
 
   sprite.setPosition(x, y);
   hit_box = sprite.getGlobalBounds();
+}
+
+void Character::score(int a)
+{
+  points = points + a;
 }
