@@ -11,6 +11,7 @@ public:
   int x, y, size;
   sf::RectangleShape hit_box;
   Character(int, int);
+  void move(int, int);
 };
 
 
@@ -21,7 +22,13 @@ Character::Character(int a, int b) {
   hit_box.setSize(sf::Vector2f(size, size));
   hit_box.setPosition(x, y);
 }
-  
+
+void Character::move(int a, int b)
+{
+  x = x + a;
+  y = y + b;
+  hit_box.setPosition(x, y);
+}
 
 
 
@@ -65,14 +72,16 @@ int main()
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	    player.y++;
+	    player.move(0, 1);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	    player.x++;
+	    player.move(1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	    player.x--;
+	    player.move(-1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	    player.y--;
+	    player.move(0, -1);
 	}
+      //Update Entities
+      player.hit_box.setPosition(player.x, player.y);
       
       //Update Window
       std::cout << player.y << "\n";
