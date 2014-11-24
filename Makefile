@@ -66,7 +66,7 @@ CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
 am_walker_OBJECTS = walker-main.$(OBJEXT) walker-character.$(OBJEXT) \
-	walker-gui.$(OBJEXT)
+	walker-gui.$(OBJEXT) walker-player.$(OBJEXT)
 walker_OBJECTS = $(am_walker_OBJECTS)
 walker_LDADD = $(LDADD)
 walker_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(walker_LDFLAGS) \
@@ -203,7 +203,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-walker_SOURCES = src/main.cpp src/walker.hpp src/character.cpp src/character.hpp src/gui.hpp src/gui.cpp
+walker_SOURCES = src/main.cpp src/walker.hpp src/character.cpp src/character.hpp src/gui.hpp src/gui.cpp src/player.hpp src/player.cpp
 walker_CPPFLAGS = $(SFML_CFLAGS)
 walker_LDFLAGS = $(SFML_LIBS)
 all: all-am
@@ -297,6 +297,7 @@ distclean-compile:
 include ./$(DEPDIR)/walker-character.Po
 include ./$(DEPDIR)/walker-gui.Po
 include ./$(DEPDIR)/walker-main.Po
+include ./$(DEPDIR)/walker-player.Po
 
 .cpp.o:
 	$(CXXCOMPILE) -MT $@ -MD -MP -MF $(DEPDIR)/$*.Tpo -c -o $@ $<
@@ -353,6 +354,20 @@ walker-gui.obj: src/gui.cpp
 #	source='src/gui.cpp' object='walker-gui.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-gui.obj `if test -f 'src/gui.cpp'; then $(CYGPATH_W) 'src/gui.cpp'; else $(CYGPATH_W) '$(srcdir)/src/gui.cpp'; fi`
+
+walker-player.o: src/player.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-player.o -MD -MP -MF $(DEPDIR)/walker-player.Tpo -c -o walker-player.o `test -f 'src/player.cpp' || echo '$(srcdir)/'`src/player.cpp
+	$(am__mv) $(DEPDIR)/walker-player.Tpo $(DEPDIR)/walker-player.Po
+#	source='src/player.cpp' object='walker-player.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-player.o `test -f 'src/player.cpp' || echo '$(srcdir)/'`src/player.cpp
+
+walker-player.obj: src/player.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-player.obj -MD -MP -MF $(DEPDIR)/walker-player.Tpo -c -o walker-player.obj `if test -f 'src/player.cpp'; then $(CYGPATH_W) 'src/player.cpp'; else $(CYGPATH_W) '$(srcdir)/src/player.cpp'; fi`
+	$(am__mv) $(DEPDIR)/walker-player.Tpo $(DEPDIR)/walker-player.Po
+#	source='src/player.cpp' object='walker-player.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-player.obj `if test -f 'src/player.cpp'; then $(CYGPATH_W) 'src/player.cpp'; else $(CYGPATH_W) '$(srcdir)/src/player.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

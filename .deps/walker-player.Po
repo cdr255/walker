@@ -1,10 +1,10 @@
-walker-main.o: src/main.cpp /usr/include/stdc-predef.h src/walker.hpp \
- /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
- /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
- /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
- /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
- /usr/include/c++/4.8.2/ostream /usr/include/c++/4.8.2/ios \
- /usr/include/c++/4.8.2/iosfwd \
+walker-player.o: src/player.cpp /usr/include/stdc-predef.h src/player.hpp \
+ src/character.hpp /usr/include/SFML/Graphics.hpp \
+ /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
+ /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \
+ /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
+ /usr/include/SFML/System/Err.hpp /usr/include/c++/4.8.2/ostream \
+ /usr/include/c++/4.8.2/ios /usr/include/c++/4.8.2/iosfwd \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/c++config.h \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/os_defines.h \
  /usr/include/features.h /usr/include/sys/cdefs.h \
@@ -146,13 +146,13 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h src/walker.hpp \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/ConvexShape.hpp \
  /usr/include/SFML/Graphics/Sprite.hpp \
- /usr/include/SFML/Graphics/Text.hpp /usr/include/c++/4.8.2/iostream \
- /usr/include/c++/4.8.2/istream /usr/include/c++/4.8.2/bits/istream.tcc \
- src/character.hpp src/gui.hpp src/player.hpp
+ /usr/include/SFML/Graphics/Text.hpp
 
 /usr/include/stdc-predef.h:
 
-src/walker.hpp:
+src/player.hpp:
+
+src/character.hpp:
 
 /usr/include/SFML/Graphics.hpp:
 
@@ -533,15 +533,3 @@ src/walker.hpp:
 /usr/include/SFML/Graphics/Sprite.hpp:
 
 /usr/include/SFML/Graphics/Text.hpp:
-
-/usr/include/c++/4.8.2/iostream:
-
-/usr/include/c++/4.8.2/istream:
-
-/usr/include/c++/4.8.2/bits/istream.tcc:
-
-src/character.hpp:
-
-src/gui.hpp:
-
-src/player.hpp:

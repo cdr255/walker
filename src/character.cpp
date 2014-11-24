@@ -33,3 +33,4 @@ void Character::score(int a)
 {
   points = points + a;
 }
+

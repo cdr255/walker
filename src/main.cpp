@@ -1,6 +1,7 @@
 #include "walker.hpp"
 #include "character.hpp"
 #include "gui.hpp"
+#include "player.hpp"
 
 int main()
 {
@@ -15,15 +16,7 @@ int main()
       if(system.focused == true)
 	{
 	  
-	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	      player.move(0, delta);
-	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	      player.move(delta, 0);
-	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	      player.move(delta * -1, 0);
-	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	      player.move(0, delta * -1);
-	  
+	  player_control(player, delta);
 	  if(player.hit_box.intersects(destiny.hit_box))
 	    player.score(1);
 
