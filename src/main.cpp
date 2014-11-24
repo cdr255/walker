@@ -6,7 +6,8 @@ int main()
   sf::Clock clock;
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
   Character player(100, 100, TILESIZE);
-  sf::View screen(sf::FloatRect(100, 100, 132, 132));
+  Character destiny(164, 164, TILESIZE);
+  sf::View screen(sf::FloatRect(100, 100, 160, 160));
   screen.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
   AppWindow.setView(screen);
   
@@ -64,6 +65,7 @@ int main()
       //Update Window
       AppWindow.clear(sf::Color::Black);
       AppWindow.draw(player.hit_box);
+      AppWindow.draw(destiny.hit_box);
       AppWindow.display();
     }
 
