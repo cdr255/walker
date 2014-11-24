@@ -1,8 +1,10 @@
 #include "walker.hpp"
 #include "character.hpp"
 
+
 int main()
 {
+  int score = 0;
   sf::Clock clock;
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
   Character player(100, 100, TILESIZE);
@@ -47,10 +49,10 @@ int main()
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	    if(player.y < 200)
+	    if(player.y < 228)
 	      player.move(0, SPEED * delta_time.asSeconds());
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	    if(player.x < 200)
+	    if(player.x < 228)
 	      player.move(SPEED * delta_time.asSeconds(), 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
 	    if(player.x > 100)
@@ -58,14 +60,16 @@ int main()
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
 	    if(player.y > 100)
 	      player.move(0, SPEED * delta_time.asSeconds() * -1);
+	  
+	  if(player.hit_box.intersects(destiny.hit_box))
+	    score++;
+
 	}
-      //Update Entities
-      player.hit_box.setPosition(player.x, player.y);
-      
       //Update Window
+      std::cout << score << "\n";
       AppWindow.clear(sf::Color::Black);
-      AppWindow.draw(player.hit_box);
-      AppWindow.draw(destiny.hit_box);
+      AppWindow.draw(player.sprite);
+      AppWindow.draw(destiny.sprite);
       AppWindow.display();
     }
 
