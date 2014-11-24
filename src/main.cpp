@@ -4,39 +4,35 @@
 
 int main()
 {
+  Gui system;
   sf::Clock clock;
-  sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "Walker v0.1");
   Character player(100, 100, TILESIZE);
   Character destiny(164, 164, TILESIZE);
-  sf::View screen(sf::FloatRect(100, 100, 160, 160));
-  screen.setViewport(sf::FloatRect(0.0f, 0.0f, 1.0f, 1.0f));
-  AppWindow.setView(screen);
-  
   
   // Main Loop
-  while(AppWindow.isOpen())
+  while(system.AppWindow.isOpen())
     {
-      sf::Time delta_time = clock.restart();
+      sf::Time delta_time = system.clock.restart();
 
       std::cout << "Time Elapsed: " << delta_time.asSeconds() << ".\n";
       // Event Handling
       sf::Event event;
-      while(AppWindow.pollEvent(event))
+      while(system.AppWindow.pollEvent(event))
 	{
 	  switch (event.type)
 	    {
 	      // Pause When Unfocused
 	    case sf::Event::LostFocus:
-	      focused = false;
+	      system.focused = false;
 	      break;
 	     
 	    case sf::Event::GainedFocus:
-	      focused = true;
+	      system.focused = true;
 	      break;
 
 	      //Close Window
 	    case sf::Event::Closed:
-	      AppWindow.close();
+	      system.AppWindow.close();
 	      break;
 	      
 	    default:
@@ -44,7 +40,7 @@ int main()
 	    }
 	}
 
-      if(focused == true)
+      if(system.focused == true)
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
@@ -66,10 +62,10 @@ int main()
 	}
       //Update Window
       std::cout << player.points << "\n";
-      AppWindow.clear(sf::Color::Black);
-      AppWindow.draw(player.sprite);
-      AppWindow.draw(destiny.sprite);
-      AppWindow.display();
+      system.AppWindow.clear(sf::Color::Black);
+      system.AppWindow.draw(player.sprite);
+      system.AppWindow.draw(destiny.sprite);
+      system.AppWindow.display();
     }
 
 
