@@ -1,6 +1,6 @@
 #include "character.hpp"
 
-Character::Character(float a, float b, float tilesize) {
+Character::Character(float a, float b, float tilesize, float speedfactor) {
   x = a;
   y = b;
   size = tilesize;
@@ -8,12 +8,14 @@ Character::Character(float a, float b, float tilesize) {
   sprite.setPosition(x, y);
   hit_box = sprite.getGlobalBounds();
   points = 0;
+  speed = speedfactor;
+
 }
 
 void Character::move(float a, float b)
 {
-  x = x + 32 * a;
-  y = y + 32 * b;
+  x = x + size * a * speed;
+  y = y + size * b * speed;
   if(x > 228)
     x = 228;
   if(y > 228)

@@ -5,11 +5,11 @@
 class Character {
   // Things that walk on the map.
 public:
-  float x, y, size;
+  float x, y, size, speed;
   int points;
   sf::RectangleShape sprite;
   sf::FloatRect hit_box;
-  Character(float, float, float);
+  Character(float, float, float, float);
   void move(float, float);
   void score(int);
 };

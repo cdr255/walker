@@ -5,8 +5,8 @@
 int main()
 {
   Gui system(300, 300, "Walker", 100, 100, 160, 160);
-  Character player(100, 100, TILESIZE);
-  Character destiny(164, 164, TILESIZE);
+  Character player(100, 100, TILESIZE, SPEED);
+  Character destiny(164, 164, TILESIZE, SPEED);
   
   // Main Loop
   while(system.AppWindow.isOpen())
@@ -16,13 +16,13 @@ int main()
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	      player.move(0, SPEED * delta);
+	      player.move(0, delta);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	      player.move(SPEED * delta, 0);
+	      player.move(delta, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	      player.move(SPEED * delta * -1, 0);
+	      player.move(delta * -1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	      player.move(0, SPEED * delta * -1);
+	      player.move(0, delta * -1);
 	  
 	  if(player.hit_box.intersects(destiny.hit_box))
 	    player.score(1);
