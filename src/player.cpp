@@ -1,13 +1,18 @@
 #include "player.hpp"
 
-void player_control(Character& player, float delta)
+Player::Player(float a, float b, float tilesize, float speedfactor)
+  : Character(a, b, tilesize, speedfactor)
+{
+}
+
+void Player::control (float delta)
 {
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	    player.move(0, delta);
+	    move(0, delta);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	    player.move(delta, 0);
+	    move(delta, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	      player.move(delta * -1, 0);
+	    move(delta * -1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	      player.move(0, delta * -1);
+	    move(0, delta * -1);
 }  

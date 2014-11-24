@@ -6,7 +6,7 @@
 int main()
 {
   Gui system(300, 300, "Walker", 100, 100, 160, 160);
-  Character player(100, 100, TILESIZE, SPEED);
+  Player player(100, 100, TILESIZE, SPEED);
   Character destiny(164, 164, TILESIZE, SPEED);
   
   // Main Loop
@@ -16,7 +16,7 @@ int main()
       if(system.focused == true)
 	{
 	  
-	  player_control(player, delta);
+	  player.control(delta);
 	  if(player.hit_box.intersects(destiny.hit_box))
 	    player.score(1);
 
