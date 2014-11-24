@@ -1,0 +1,6 @@
+autoscan: warning: missing AC_CHECK_HEADER_STDBOOL wanted by: 
+	src/walker.hpp:7
+	src/main.cpp:23
+	src/main.cpp:27
+	src/main.cpp:40
+	src/walker.hpp:7
