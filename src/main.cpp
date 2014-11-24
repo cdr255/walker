@@ -16,16 +16,12 @@ int main()
 	{
 	  
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-	    if(player.y < 228)
 	      player.move(0, SPEED * delta);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-	    if(player.x < 228)
 	      player.move(SPEED * delta, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-	    if(player.x > 100)
 	      player.move(SPEED * delta * -1, 0);
 	  if(sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-	    if(player.y > 100)
 	      player.move(0, SPEED * delta * -1);
 	  
 	  if(player.hit_box.intersects(destiny.hit_box))
