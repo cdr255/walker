@@ -65,7 +65,7 @@ CONFIG_CLEAN_FILES =
 CONFIG_CLEAN_VPATH_FILES =
 am__installdirs = "$(DESTDIR)$(bindir)"
 PROGRAMS = $(bin_PROGRAMS)
-am_walker_OBJECTS = walker-main.$(OBJEXT)
+am_walker_OBJECTS = walker-main.$(OBJEXT) walker-character.$(OBJEXT)
 walker_OBJECTS = $(am_walker_OBJECTS)
 walker_LDADD = $(LDADD)
 walker_LINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(walker_LDFLAGS) \
@@ -79,6 +79,10 @@ CXXCOMPILE = $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) \
 CXXLD = $(CXX)
 CXXLINK = $(CXXLD) $(AM_CXXFLAGS) $(CXXFLAGS) $(AM_LDFLAGS) $(LDFLAGS) \
 	-o $@
+COMPILE = $(CC) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(AM_CPPFLAGS) \
+	$(CPPFLAGS) $(AM_CFLAGS) $(CFLAGS)
+CCLD = $(CC)
+LINK = $(CCLD) $(AM_CFLAGS) $(CFLAGS) $(AM_LDFLAGS) $(LDFLAGS) -o $@
 SOURCES = $(walker_SOURCES)
 DIST_SOURCES = $(walker_SOURCES)
 am__can_run_installinfo = \
@@ -109,17 +113,23 @@ AUTOCONF = ${SHELL} /home/chrissofer/code/walker/missing --run autoconf
 AUTOHEADER = ${SHELL} /home/chrissofer/code/walker/missing --run autoheader
 AUTOMAKE = ${SHELL} /home/chrissofer/code/walker/missing --run automake-1.11
 AWK = gawk
+CC = gcc
+CCDEPMODE = depmode=gcc3
+CFLAGS = -g -O2
+CPP = gcc -E
 CPPFLAGS = 
 CXX = g++
 CXXDEPMODE = depmode=gcc3
 CXXFLAGS = -g -O2
 CYGPATH_W = echo
-DEFS = -DPACKAGE_NAME=\"Walker\" -DPACKAGE_TARNAME=\"walker\" -DPACKAGE_VERSION=\"0.1\" -DPACKAGE_STRING=\"Walker\ 0.1\" -DPACKAGE_BUGREPORT=\"\" -DPACKAGE_URL=\"\" -DPACKAGE=\"walker\" -DVERSION=\"0.1\"
+DEFS = -DPACKAGE_NAME=\"Walker\" -DPACKAGE_TARNAME=\"walker\" -DPACKAGE_VERSION=\"0.1\" -DPACKAGE_STRING=\"Walker\ 0.1\" -DPACKAGE_BUGREPORT=\"cdr255@gmail.com\" -DPACKAGE_URL=\"\" -DPACKAGE=\"walker\" -DVERSION=\"0.1\" -DSTDC_HEADERS=1 -DHAVE_SYS_TYPES_H=1 -DHAVE_SYS_STAT_H=1 -DHAVE_STDLIB_H=1 -DHAVE_STRING_H=1 -DHAVE_MEMORY_H=1 -DHAVE_STRINGS_H=1 -DHAVE_INTTYPES_H=1 -DHAVE_STDINT_H=1 -DHAVE_UNISTD_H=1 -DHAVE__BOOL=1
 DEPDIR = .deps
 ECHO_C = 
 ECHO_N = -n
 ECHO_T = 
+EGREP = /usr/bin/grep -E
 EXEEXT = 
+GREP = /usr/bin/grep
 INSTALL = /usr/bin/ginstall -c
 INSTALL_DATA = ${INSTALL} -m 644
 INSTALL_PROGRAM = ${INSTALL}
@@ -133,7 +143,7 @@ MAKEINFO = ${SHELL} /home/chrissofer/code/walker/missing --run makeinfo
 MKDIR_P = /usr/bin/mkdir -p
 OBJEXT = o
 PACKAGE = walker
-PACKAGE_BUGREPORT = 
+PACKAGE_BUGREPORT = cdr255@gmail.com
 PACKAGE_NAME = Walker
 PACKAGE_STRING = Walker 0.1
 PACKAGE_TARNAME = walker
@@ -153,6 +163,7 @@ abs_builddir = /home/chrissofer/code/walker
 abs_srcdir = /home/chrissofer/code/walker
 abs_top_builddir = /home/chrissofer/code/walker
 abs_top_srcdir = /home/chrissofer/code/walker
+ac_ct_CC = gcc
 ac_ct_CXX = g++
 am__include = include
 am__leading_dot = .
@@ -191,7 +202,7 @@ target_alias =
 top_build_prefix = 
 top_builddir = .
 top_srcdir = .
-walker_SOURCES = src/main.cpp
+walker_SOURCES = src/main.cpp src/walker.hpp src/character.cpp src/character.hpp
 walker_CPPFLAGS = $(SFML_CFLAGS)
 walker_LDFLAGS = $(SFML_LIBS)
 all: all-am
@@ -282,6 +293,7 @@ mostlyclean-compile:
 distclean-compile:
 	-rm -f *.tab.c
 
+include ./$(DEPDIR)/walker-character.Po
 include ./$(DEPDIR)/walker-main.Po
 
 .cpp.o:
@@ -311,6 +323,20 @@ walker-main.obj: src/main.cpp
 #	source='src/main.cpp' object='walker-main.obj' libtool=no \
 #	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
 #	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-main.obj `if test -f 'src/main.cpp'; then $(CYGPATH_W) 'src/main.cpp'; else $(CYGPATH_W) '$(srcdir)/src/main.cpp'; fi`
+
+walker-character.o: src/character.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-character.o -MD -MP -MF $(DEPDIR)/walker-character.Tpo -c -o walker-character.o `test -f 'src/character.cpp' || echo '$(srcdir)/'`src/character.cpp
+	$(am__mv) $(DEPDIR)/walker-character.Tpo $(DEPDIR)/walker-character.Po
+#	source='src/character.cpp' object='walker-character.o' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-character.o `test -f 'src/character.cpp' || echo '$(srcdir)/'`src/character.cpp
+
+walker-character.obj: src/character.cpp
+	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT walker-character.obj -MD -MP -MF $(DEPDIR)/walker-character.Tpo -c -o walker-character.obj `if test -f 'src/character.cpp'; then $(CYGPATH_W) 'src/character.cpp'; else $(CYGPATH_W) '$(srcdir)/src/character.cpp'; fi`
+	$(am__mv) $(DEPDIR)/walker-character.Tpo $(DEPDIR)/walker-character.Po
+#	source='src/character.cpp' object='walker-character.obj' libtool=no \
+#	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) \
+#	$(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(walker_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o walker-character.obj `if test -f 'src/character.cpp'; then $(CYGPATH_W) 'src/character.cpp'; else $(CYGPATH_W) '$(srcdir)/src/character.cpp'; fi`
 
 ID: $(HEADERS) $(SOURCES) $(LISP) $(TAGS_FILES)
 	list='$(SOURCES) $(HEADERS) $(LISP) $(TAGS_FILES)'; \

@@ -1,41 +1,10 @@
-#include <iostream>
-#include <SFML/Graphics.hpp>
-
-const int TILESIZE=32;
-bool focused=true;
-
-
-class Character {
-  // Things that walk on the map.
-public:
-  int x, y, size;
-  sf::RectangleShape hit_box;
-  Character(int, int);
-  void move(int, int);
-};
-
-
-Character::Character(int a, int b) {
-  x = a;
-  y = b;
-  size = TILESIZE;
-  hit_box.setSize(sf::Vector2f(size, size));
-  hit_box.setPosition(x, y);
-}
-
-void Character::move(int a, int b)
-{
-  x = x + a;
-  y = y + b;
-  hit_box.setPosition(x, y);
-}
-
-
+#include "walker.hpp"
+#include "character.hpp"
 
 int main()
 {
   sf::RenderWindow AppWindow(sf::VideoMode(300, 300), "My Window");
-  Character player(10, 10);
+  Character player(10, 10, TILESIZE);
   sf::View screen(sf::FloatRect(100, 100, 100, 100));
   screen.setViewport(sf::FloatRect(0.25f, 0.25f, 0.50f, 0.50f));
   AppWindow.setView(screen);
@@ -84,7 +53,6 @@ int main()
       player.hit_box.setPosition(player.x, player.y);
       
       //Update Window
-      std::cout << player.y << "\n";
       AppWindow.clear(sf::Color::Black);
       AppWindow.draw(player.hit_box);
       AppWindow.display();

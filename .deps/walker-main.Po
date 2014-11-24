@@ -1,13 +1,17 @@
-walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
- /usr/include/c++/4.8.2/iostream \
+walker-main.o: src/main.cpp /usr/include/stdc-predef.h src/walker.hpp \
+ /usr/include/SFML/Graphics.hpp /usr/include/SFML/Window.hpp \
+ /usr/include/SFML/System.hpp /usr/include/SFML/Config.hpp \
+ /usr/include/SFML/System/Clock.hpp /usr/include/SFML/System/Export.hpp \
+ /usr/include/SFML/System/Time.hpp /usr/include/SFML/System/Err.hpp \
+ /usr/include/c++/4.8.2/ostream /usr/include/c++/4.8.2/ios \
+ /usr/include/c++/4.8.2/iosfwd \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/c++config.h \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/os_defines.h \
  /usr/include/features.h /usr/include/sys/cdefs.h \
  /usr/include/bits/wordsize.h /usr/include/gnu/stubs.h \
  /usr/include/gnu/stubs-32.h \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/cpu_defines.h \
- /usr/include/c++/4.8.2/ostream /usr/include/c++/4.8.2/ios \
- /usr/include/c++/4.8.2/iosfwd /usr/include/c++/4.8.2/bits/stringfwd.h \
+ /usr/include/c++/4.8.2/bits/stringfwd.h \
  /usr/include/c++/4.8.2/bits/memoryfwd.h \
  /usr/include/c++/4.8.2/bits/postypes.h /usr/include/c++/4.8.2/cwchar \
  /usr/include/wchar.h /usr/include/stdio.h \
@@ -68,12 +72,7 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/c++/4.8.2/i486-slackware-linux/bits/ctype_inline.h \
  /usr/include/c++/4.8.2/bits/locale_facets.tcc \
  /usr/include/c++/4.8.2/bits/basic_ios.tcc \
- /usr/include/c++/4.8.2/bits/ostream.tcc /usr/include/c++/4.8.2/istream \
- /usr/include/c++/4.8.2/bits/istream.tcc /usr/include/SFML/Graphics.hpp \
- /usr/include/SFML/Window.hpp /usr/include/SFML/System.hpp \
- /usr/include/SFML/Config.hpp /usr/include/SFML/System/Clock.hpp \
- /usr/include/SFML/System/Export.hpp /usr/include/SFML/System/Time.hpp \
- /usr/include/SFML/System/Err.hpp \
+ /usr/include/c++/4.8.2/bits/ostream.tcc \
  /usr/include/SFML/System/InputStream.hpp \
  /usr/include/SFML/System/Lock.hpp \
  /usr/include/SFML/System/NonCopyable.hpp \
@@ -147,11 +146,35 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
  /usr/include/SFML/Graphics/RectangleShape.hpp \
  /usr/include/SFML/Graphics/ConvexShape.hpp \
  /usr/include/SFML/Graphics/Sprite.hpp \
- /usr/include/SFML/Graphics/Text.hpp
+ /usr/include/SFML/Graphics/Text.hpp /usr/include/c++/4.8.2/iostream \
+ /usr/include/c++/4.8.2/istream /usr/include/c++/4.8.2/bits/istream.tcc \
+ src/character.hpp
 
 /usr/include/stdc-predef.h:
 
-/usr/include/c++/4.8.2/iostream:
+src/walker.hpp:
+
+/usr/include/SFML/Graphics.hpp:
+
+/usr/include/SFML/Window.hpp:
+
+/usr/include/SFML/System.hpp:
+
+/usr/include/SFML/Config.hpp:
+
+/usr/include/SFML/System/Clock.hpp:
+
+/usr/include/SFML/System/Export.hpp:
+
+/usr/include/SFML/System/Time.hpp:
+
+/usr/include/SFML/System/Err.hpp:
+
+/usr/include/c++/4.8.2/ostream:
+
+/usr/include/c++/4.8.2/ios:
+
+/usr/include/c++/4.8.2/iosfwd:
 
 /usr/include/c++/4.8.2/i486-slackware-linux/bits/c++config.h:
 
@@ -168,12 +191,6 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
 /usr/include/gnu/stubs-32.h:
 
 /usr/include/c++/4.8.2/i486-slackware-linux/bits/cpu_defines.h:
-
-/usr/include/c++/4.8.2/ostream:
-
-/usr/include/c++/4.8.2/ios:
-
-/usr/include/c++/4.8.2/iosfwd:
 
 /usr/include/c++/4.8.2/bits/stringfwd.h:
 
@@ -330,26 +347,6 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
 /usr/include/c++/4.8.2/bits/basic_ios.tcc:
 
 /usr/include/c++/4.8.2/bits/ostream.tcc:
-
-/usr/include/c++/4.8.2/istream:
-
-/usr/include/c++/4.8.2/bits/istream.tcc:
-
-/usr/include/SFML/Graphics.hpp:
-
-/usr/include/SFML/Window.hpp:
-
-/usr/include/SFML/System.hpp:
-
-/usr/include/SFML/Config.hpp:
-
-/usr/include/SFML/System/Clock.hpp:
-
-/usr/include/SFML/System/Export.hpp:
-
-/usr/include/SFML/System/Time.hpp:
-
-/usr/include/SFML/System/Err.hpp:
 
 /usr/include/SFML/System/InputStream.hpp:
 
@@ -536,3 +533,11 @@ walker-main.o: src/main.cpp /usr/include/stdc-predef.h \
 /usr/include/SFML/Graphics/Sprite.hpp:
 
 /usr/include/SFML/Graphics/Text.hpp:
+
+/usr/include/c++/4.8.2/iostream:
+
+/usr/include/c++/4.8.2/istream:
+
+/usr/include/c++/4.8.2/bits/istream.tcc:
+
+src/character.hpp:
